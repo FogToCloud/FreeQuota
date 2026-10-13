@@ -14,3 +14,20 @@ env/
 # 系统
 .DS_Store
 Thumbs.db
+
+# PyInstaller 打包产物（体积巨大，不纳入 git；exe 在本地 dist/ 或用 打包.bat 重建）
+# 注意用 dist*/ 而非 dist/：本地排错时可能会生成 dist_new / dist_release 等分支产物
+dist/
+dist*/
+build/
+*.spec.bak
+__pycache__/
+
+# 本地排错日志与临时产物
+*.log
+build_log.txt
+out.txt
+exe_*.log
+fq_diag*.txt
+FreeQuota.log
+rth_metadata_ran.txt

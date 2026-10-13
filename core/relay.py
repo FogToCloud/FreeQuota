@@ -1,9 +1,9 @@
 """FreeQuota 核心：双模式统一接入。
 
 两种模式：
-- 极简（simple）：壳内置轻量接力，轮流试你填的国内免费 Key，一家挂了自动换下一家。
-- 进阶（gateway）：壳把自己指向你已装好的开源网关（FreeLLMAPI / OmniRoute），
-  由网关内部路由几百家模型，壳只负责中文界面。
+- 极简（simple）：FreeQuota 内置轻量接力，轮流试你填的国内免费 Key，一家挂了自动换下一家。
+- 进阶（gateway）：FreeQuota 把自己指向你已装好的开源网关（FreeLLMAPI / OmniRoute），
+  由网关内部路由几百家模型，FreeQuota 只负责中文界面。
 
 设计要点（为什么这套只対「白嫖党」成立）：
 - 各家大模型的注意力缓存是各自专属的，中途换模型会让缓存清零，
@@ -67,7 +67,7 @@ class Provider:
 class Gateway:
     """进阶模式：指向你已装好的开源网关（FreeLLMAPI / OmniRoute）。
 
-    网关内部负责路由、接力、冷却、限流；壳只把它当成一个「超大 provider」来调。
+    网关内部负责路由、接力、冷却、限流；FreeQuota 只把它当成一个「超大 provider」来调。
     网关通常跑在本地（localhost），很多免 key，所以 api_key 允许为空。
     """
 

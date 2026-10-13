@@ -1,4 +1,4 @@
-"""FreeQuota 主界面：浏览器聊天 + 额度油表（中文傻瓜壳）。
+"""FreeQuota 主界面：浏览器聊天 + 额度油表（开箱即用中文客户端）。
 
 面向不懂编程的普通人：
     pip install -r requirements.txt
@@ -6,19 +6,22 @@
 然后在浏览器打开提示的地址即可。
 """
 
+import os
+
 import streamlit as st
 
 from core.relay import load_config, relay_chat
 
-st.set_page_config(page_title="FreeQuota · 中文傻瓜壳", layout="wide")
+st.set_page_config(page_title="FreeQuota", layout="wide")
 
-st.title("FreeQuota · 中文傻瓜壳")
+st.title("FreeQuota")
 st.caption(
-    "站在开源网关肩膀上，给中国普通人一个双击即用、中文界面、"
-    "自动聚合免费额度的免费 ChatGPT 替代。"
+    "把各家大模型厂商送的免费额度聚在一起，一个中文界面直接聊天。"
+    "一家用完了，自动换下一家。"
 )
 
-CONFIG_PATH = "config.json"
+# 既支持 exe 启动器写入的 FREQUOTA_CONFIG，也兼容直接 python 运行时的 cwd 查找
+CONFIG_PATH = os.environ.get("FREQUOTA_CONFIG", "config.json")
 cfg = load_config(CONFIG_PATH)
 gateway = cfg["gateway"]
 providers = cfg["providers"]
@@ -29,7 +32,7 @@ use_gateway = (mode in ("auto", "gateway")) and gateway and gateway.is_configure
 if use_gateway:
     st.success(f"当前模式：进阶（已指向网关 {gateway.base_url}，由它路由几百家模型）")
 elif providers:
-    st.info("当前模式：极简（壳内置轻量接力，国内免费 Key 轮流试）")
+    st.info("当前模式：极简（FreeQuota 内置轻量接力，国内免费 Key 轮流试）")
 else:
     st.error(
         "没有可用的配置。请先复制 config.example.json 为 config.json，"
@@ -41,7 +44,7 @@ else:
 with st.sidebar:
     st.header("额度油表")
     if use_gateway:
-        st.caption("进阶模式：连通性由网关负责，壳只显示网关状态")
+        st.caption("进阶模式：连通性由网关负责，FreeQuota 只显示网关状态")
         if gateway.last_status == "正常":
             color = "green"
         elif gateway.last_status.startswith("失败"):
