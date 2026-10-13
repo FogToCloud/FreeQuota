@@ -1,26 +1,35 @@
-[
-  {
-    "name": "智谱 GLM-Flash（永久免费，建议放第一位）",
-    "base_url": "https://open.bigmodel.cn/api",
-    "api_key": "在此填入你的智谱 API Key",
-    "model": "glm-4-flash",
-    "priority": 1,
-    "enabled": true
-  },
-  {
-    "name": "硅基流动 Qwen（新用户送 2000 万+ token）",
-    "base_url": "https://api.siliconflow.cn",
-    "api_key": "在此填入你的硅基流动 API Key",
-    "model": "Qwen/Qwen2.5-7B-Instruct",
-    "priority": 2,
-    "enabled": true
-  },
-  {
-    "name": "豆包 Lite（每日 0 点刷新额度，按需开启）",
-    "base_url": "https://ark.cn-beijing.volces.com/api",
-    "api_key": "在此填入你的豆包方舟 API Key",
-    "model": "doubao-lite-4k-240828",
-    "priority": 3,
+{
+  "mode": "auto",
+  "gateway": {
+    "base_url": "http://localhost:3001",
+    "api_key": "在此填入你的网关密钥（FreeLLMAPI / OmniRoute，没装就保持原样）",
+    "model": "auto",
     "enabled": false
-  }
-]
+  },
+  "providers": [
+    {
+      "name": "智谱 GLM-Flash（永久免费，建议放第一位）",
+      "base_url": "https://open.bigmodel.cn/api",
+      "api_key": "在此填入你的智谱 API Key",
+      "model": "glm-4-flash",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "name": "硅基流动 Qwen（新用户送 2000 万+ token）",
+      "base_url": "https://api.siliconflow.cn",
+      "api_key": "在此填入你的硅基流动 API Key",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "name": "豆包 Lite（每日 0 点刷新额度，按需开启）",
+      "base_url": "https://ark.cn-beijing.volces.com/api",
+      "api_key": "在此填入你的豆包方舟 API Key",
+      "model": "doubao-lite-4k-240828",
+      "priority": 3,
+      "enabled": false
+    }
+  ]
+}
